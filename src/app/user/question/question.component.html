@@ -1,0 +1,10 @@
+<mat-card>
+    <h3>{{ question.text }}</h3>
+    <mat-radio-group [(ngModel)]="selectedAnswer">
+      <mat-radio-button *ngFor="let option of question.options" [value]="option">
+        {{ option }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <button mat-button (click)="submitAnswer()">Submit</button>
+  </mat-card>
+  
