@@ -1,10 +1,29 @@
-<mat-card>
-    <h3>{{ question.text }}</h3>
-    <mat-radio-group [(ngModel)]="selectedAnswer">
-      <mat-radio-button *ngFor="let option of question.options" [value]="option">
-        {{ option }}
-      </mat-radio-button>
-    </mat-radio-group>
-    <button mat-button (click)="submitAnswer()">Submit</button>
-  </mat-card>
+<mat-card class="question-card" *ngIf="currentQuestionIndex < questions.length">
+  <h3 class="question-title">Question {{questionNumber}} :  {{ currentQuestion.text }}</h3>
   
+  <mat-radio-group [(ngModel)]="selectedAnswer" class="question-options" [disabled]="answerChecked">
+    <mat-radio-button 
+      *ngFor="let option of currentQuestion.options" 
+      [value]="option" 
+      [class.correct]="option === currentQuestion.correctAnswer && answerChecked"
+      [class.incorrect]="option === selectedAnswer && option !== currentQuestion.correctAnswer && answerChecked">
+      {{ option }}
+    </mat-radio-button>
+  </mat-radio-group>
+  
+  <div class="submit-button-container">
+    <button mat-raised-button color="primary" (click)="checkAnswer()" [disabled]="answerChecked">Check Answer</button>
+  </div>
+  
+  <div *ngIf="answerChecked" class="result-feedback">
+    <p *ngIf="selectedAnswer === currentQuestion.correctAnswer" class="correct-feedback">Correct!</p>
+    <p *ngIf="selectedAnswer !== currentQuestion.correctAnswer" class="incorrect-feedback">
+      Incorrect! The correct answer is {{ currentQuestion.correctAnswer }}.
+    </p>
+    <button mat-raised-button color="accent" (click)="nextQuestion()">Next Question</button>
+  </div>
+</mat-card>
+
+<mat-card *ngIf="currentQuestionIndex >= questions.length">
+  <h3 class="quiz-complete">Quiz Complete! Thanks for playing.</h3>
+</mat-card>

@@ -1,0 +1,61 @@
+.question-card {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.question-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.question-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 30px;
+  font-size: 1rem;
+}
+
+/* Correct and Incorrect Option Styles */
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold;
+}
+
+.result-feedback {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.correct-feedback {
+  color: green;
+}
+
+.incorrect-feedback {
+  color: red;
+}
+
+.quiz-complete {
+  text-align: center;
+  font-size: 1.5rem;
+  color: green;
+}
