@@ -1,2 +1,27 @@
 <h1>Quiz App</h1>
+<div class="home-container">
+    <h2>Welcome, {{ student.name }}!</h2>
+</div>
+<div class="progress-section">
+    <mat-card>
+      <h3>Progress Overview</h3>
+      <mat-progress-bar 
+        mode="determinate" 
+        [value]="overallProgress">
+      </mat-progress-bar>
+      <p>{{ overallProgress }}% completed</p>
+    </mat-card>
+  </div>
+
+  <div class="quiz-summary-section">
+    <mat-card *ngFor="let quiz of student.quizzes">
+      <h4>{{ quiz.quizId | titlecase }} Quiz</h4>
+      <p>Score: {{ quiz.score }}%</p>
+      <p>Correct Answers: {{ quiz.correctAnswers }} / {{ quiz.totalQuestions }}</p>
+    </mat-card>
+  </div>
+
+  <div class="action-section">
+    <button mat-raised-button color="primary" (click)="startNewQuiz()">Take New Quiz</button>
+  </div>
 <app-question></app-question>
